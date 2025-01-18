@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Fechas {
 
     public static void main(String[] args) {
-
+/**
         //Ejercicio 1
         LocalDate fecha = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         System.out.println("Fecha 1: " + fecha);
@@ -31,7 +31,7 @@ public class Fechas {
         } else {
             System.out.println("No es un año bisiesto");
         }
-
+* */
         //Ejercicio 3
         Scanner teclado = new Scanner(System.in);
 
@@ -50,5 +50,29 @@ public class Fechas {
         String stFecha = teclado.nextLine();
         LocalDate fechaParse = LocalDate.parse(stFecha);
         System.out.println("Has fijado la fecha con formato: " + fechaParse);
+        
+
+        //Ejercicio 4
+        if (fechaNoParse.isEqual(fechaParse)) {
+            System.out.println("Las fechas son iguales");
+        } else {
+            System.out.println("Las fechas son diferentes");
+        }
+        
+        if(fechaNoParse.isBefore(fechaParse)) {
+            System.out.println("La fecha anterior es: " + fechaNoParse);
+        } else {
+            System.out.println("La fecha " + fechaNoParse + "no es anterior");
+        }
+        
+        if(fechaNoParse.isAfter(fechaParse)) {
+            System.out.println("La fecha posterior es: " + fechaNoParse);
+        } else {
+            System.out.println("La fecha " + fechaNoParse + "no es posterior");
+        }
+        
+        
+        //Ejercicio 5
+        
     }
 }
