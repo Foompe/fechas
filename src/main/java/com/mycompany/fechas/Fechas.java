@@ -4,6 +4,8 @@
 package com.mycompany.fechas;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
@@ -18,11 +20,13 @@ public class Fechas {
         //Ejercicio 1
         LocalDate fecha = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         System.out.println("Fecha 1: " + fecha);
-
+        
+        //Parte A
         LocalDate fecha2 = LocalDate.of(LocalDate.now().getYear(), 3, 15);
         System.out.println("Fecha 2: " + fecha2);
 
-        LocalDate fechaHOY = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+         //ParteB 
+        LocalDate fechaHOY = LocalDate.now();
         System.out.println("Fecha de hoy: " + fechaHOY);
 
         //Ejercicio2
@@ -71,7 +75,7 @@ public class Fechas {
         } else {
             System.out.println("La fecha " + fechaNoParse + "no es posterior");
         }
-   * */     
+   
         
         //Ejercicio 5
         Scanner teclado = new Scanner(System.in);
@@ -93,11 +97,31 @@ public class Fechas {
         //Parte B
         fechaNoParse.plus(57,ChronoUnit.DAYS);
         System.out.println("Sumando 57 días, estamos a: " + fechaNoParse.getDayOfWeek() + " día: " + fechaNoParse.getDayOfMonth());
-        
+             
         //Ejercicio 6
+        //Scanner teclado = new Scanner(System.in);
+        LocalDate fechaHoy = LocalDate.now();
+        System.out.println("fecha 1: " + fechaHoy);
         //Parte A
+        System.out.println("Calculo de años\nIntroduce tu fecha de nacimiento en formato AAAA-MM--DD");
+        String Cumple = teclado.nextLine();
+        LocalDate fechaCumple = LocalDate.parse(Cumple);
         
+        long anos = fechaCumple.until(fechaHoy, ChronoUnit.YEARS);
+        System.out.println("Tienes " + anos + " años.");
+    */    
+        //Parte B (para que funcione debemos pasar de LocalDate a LocalDateTime que toma tambien horas, minutos y segundos;
+        LocalDateTime fechaHoyS = LocalDateTime.now();
+        System.out.println("Calculo de los segundos que han pasado desde principios de año.");
+        LocalDateTime ano1 = LocalDateTime.of(2025,01 , 01, 0, 0, 0);
+        long segundos = ano1.until(fechaHoyS,ChronoUnit.SECONDS);
+        System.out.println("Han pasado: " + segundos + " segundos\n");
         
-        
+        //Parte C
+         System.out.println("Calculo de días que faltan para las vaciones de verano");
+         LocalDate fechaHoy = LocalDate.now();
+         LocalDate vacas = LocalDate.of(2025, 06, 15);
+         long dias = ChronoUnit.DAYS.between(fechaHoy, vacas);
+         System.out.println("Fecha de hoy: " + fechaHoy + "\nComienzo vacas: " + vacas + "\nFaltan " + dias + " dias para las vacaciones de verano");
     }
 }
