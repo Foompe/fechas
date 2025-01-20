@@ -4,6 +4,7 @@
 package com.mycompany.fechas;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 /**
@@ -31,7 +32,7 @@ public class Fechas {
         } else {
             System.out.println("No es un año bisiesto");
         }
-* */
+
         //Ejercicio 3
         Scanner teclado = new Scanner(System.in);
 
@@ -70,9 +71,33 @@ public class Fechas {
         } else {
             System.out.println("La fecha " + fechaNoParse + "no es posterior");
         }
-        
+   * */     
         
         //Ejercicio 5
+        Scanner teclado = new Scanner(System.in);
+
+        //Parte A
+        //tomamos la fecha
+        System.out.println("introduce el día");
+        int dia = Integer.parseInt(teclado.nextLine());
+        System.out.println("introduce el mes");
+        int mes = Integer.parseInt(teclado.nextLine());
+        System.out.println("Introduce el año");
+        int año = Integer.parseInt(teclado.nextLine());
+        LocalDate fechaNoParse = LocalDate.of(año, mes, dia);
+        System.out.println("Has fijado fecha sin formato: " + fechaNoParse);
+        //sumamos 30 dias (para lanzar debemos importar el paquete chronoUnit
+        fechaNoParse = fechaNoParse.plus(30,ChronoUnit.DAYS);
+        System.out.println("Sumando 30 días: " + fechaNoParse);
+        
+        //Parte B
+        fechaNoParse.plus(57,ChronoUnit.DAYS);
+        System.out.println("Sumando 57 días, estamos a: " + fechaNoParse.getDayOfWeek() + " día: " + fechaNoParse.getDayOfMonth());
+        
+        //Ejercicio 6
+        //Parte A
+        
+        
         
     }
 }
